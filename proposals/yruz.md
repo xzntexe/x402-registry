@@ -20,10 +20,14 @@
   | Verify / Settle | `POST /verify`, `POST /settle` | `POST /verify`, `POST /settle` | `POST /verify`, `POST /settle` |
   | Auth | none | none for `exact` | none |
 - Facilitator signer / fee payer addresses (not YRUZ addresses): Solana fee payers as offered in our 402: OpenFacilitator Hbe1vdFs4EQVVAzcV12muHhr6DEKwrT9roMXGPLxLBLP, PayAI CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww, Dexter DeXterR2kQm8AvRHnNPatWkE46TfAcMeBDjb6FySoAb8.
-- Requested scope: **Base mainnet only for now** (eip155:8453). Solana is offered in every 402 as well; we will add a Solana settlement example in a follow-up before asking for Solana to be listed.
+- Requested scope: **Base mainnet (eip155:8453) and Solana mainnet (solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp)**. Solana settlement examples were added on 2026-10-27 (below).
 - Example successful settlements (GET https://yruz.one/api/audit, 0.01 USDC each, Base). Both buyers were third-party directory verifiers that buy once to check delivery (one identified itself as SettledScout), not customers and not operator tests:
   - https://basescan.org/tx/0xe95e08567b9aa918f69fbaa99006cdb9d26ff51c5325b2f6f83c4ed841a4ff1f (2026-10-20 19:18 UTC, via OpenFacilitator). Public payment record: https://yruz.one/x402.php?r=payment&id=66c2dbb11e32459a73fe3bb00006510c
   - https://basescan.org/tx/0xedefc1a77c72e5b5e91f922259e93d15948e0d3d3864257925537d8f6db2b535 (2026-10-20 07:23 UTC, via PayAI). Public payment record: https://yruz.one/x402.php?r=payment&id=fd5be0567d922990ef20823331610fc8
+- Example Solana settlements (GET https://yruz.one/api/audit, 0.01 USDC each, Solana mainnet, official `@x402/fetch` + `@x402/svm` client, x402 v2 `PAYMENT-SIGNATURE`), one per facilitator. **These are operator test purchases** from a wallet we fund ourselves (6xYsqQuFEBj1r3MKhT98Yny1x7WMMC1DkPLbaRQZNUN7), made on 2026-10-27 to show the Solana pay path end to end; they are not customer revenue:
+  - https://solscan.io/tx/4qRLxsTpTH5c5qA8ZVHggGxCJgDpDHc4R9VxdJzp25z2xoN8Hf7oi8sYTqS2hWmKKMSCHj9vPQYWWYh3sNz9uRKM (via PayAI). Public payment record: https://yruz.one/x402.php?r=payment&id=d8fd02bd0c5d9dd88ceaab31f4bba1ad
+  - https://solscan.io/tx/4XLeSvGLxxTGcwvq2nyXaS5TVHh3mayQNvFNcwGWB59JWceG41XYe2Dw4MmSzS4TjZgs7yTSBJ62KYM4PCS7xYQW (via Dexter). Public payment record: https://yruz.one/x402.php?r=payment&id=665913e2f4a9b5dec5c23c94b0b52dfc
+  - https://solscan.io/tx/3hw8JDQSE4No1wTPPmJAbUbx78uxTkd3J7TxF6tfczF7k6oZAohxP6BwHKxT34VgAuKMpSW34S4BT8GDpEa4r1kH (via OpenFacilitator). Public payment record: https://yruz.one/x402.php?r=payment&id=d6a3009868600e2a1e60c9ad3ad2555a
 - Decoded settlement receipt (the `PAYMENT-RESPONSE` header our server returned with the paid response; reconstructed from our payment record, payer shortened):
 
   ```json
